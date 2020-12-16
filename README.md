@@ -1,5 +1,8 @@
 # Domain Driven Architecture
-basic skeleton for domain driven architecture
+Basic skeleton for Domain Driven Design with Hexagonal Architecture.
+
+## Hexagonal Architecture?
+The hexagonal architecture, or ports and adapters architecture, is an architectural pattern used in software design. It aims at creating loosely coupled application components that can be easily connected to their software environment by means of ports and adapters. This makes components exchangeable at any level and facilitates test automation.
 
 ![Domain Driven Design with Hexagonal Architecture](https://vaadin.com/static/content/learning-center/learn/tutorials/ddd/03__ddd_and_hexagonal/images/hexagonal.png)<br/>
 
