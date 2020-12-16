@@ -1,4 +1,4 @@
-# hexagonal-spring-boot
+# Domain Driven architecture
 basic skeleton for domain driven architecture
 
 To build project
