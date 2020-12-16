@@ -6,10 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table
 @Entity
@@ -19,16 +16,25 @@ import javax.persistence.Table;
 @Builder
 public class StudentEntity {
     @Id
-    private long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_seq")
+    @SequenceGenerator(
+            name="student_seq",
+            sequenceName="student_sequence",
+            allocationSize=100
+    )
+    @Basic(optional = false)
+    @Column(name = "id",unique=true, nullable = false)
+    private Long id;
 
-    @Column
-    private long studentRef;
+    @Column(name = "STD_REF")
+    private Long studentRef;
 
-    @Column
+    @Column(name = "STD_NAME")
     private String name;
 
     public static StudentEntity fromStudent(Student student){
        return StudentEntity.builder()
+                .id(student.getId())
                 .studentRef(student.getStudentRef())
                 .name(student.getName())
                 .build();
@@ -36,6 +42,7 @@ public class StudentEntity {
 
     public Student toStudent(){
         return Student.builder()
+                .id(id)
                 .studentRef(studentRef)
                 .name(name)
                 .build();

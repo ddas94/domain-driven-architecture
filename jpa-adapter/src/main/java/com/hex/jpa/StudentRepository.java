@@ -5,6 +5,9 @@ import com.hex.jpa.entity.StudentEntity;
 import com.hexdomain.api.model.Student;
 import com.hexdomain.api.port.ObtainStudent;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class StudentRepository implements ObtainStudent {
 
     private final StudentDao studentDao;
@@ -15,6 +18,11 @@ public class StudentRepository implements ObtainStudent {
     }
     @Override
     public Student save(Student student) {
-        return studentDao.save(StudentEntity.fromStudent(student).toStudent());
+        return studentDao.save(StudentEntity.fromStudent(student)).toStudent();
+    }
+
+    @Override
+    public List<Student> getStudents() {
+        return studentDao.findAll().stream().map(StudentEntity::toStudent).collect(Collectors.toList());
     }
 }
