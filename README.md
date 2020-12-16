@@ -1,4 +1,4 @@
-# Domain Driven architecture
+# Domain Driven Architecture
 basic skeleton for domain driven architecture
 
 To build project
